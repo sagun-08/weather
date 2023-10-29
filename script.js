@@ -6,12 +6,12 @@ document.querySelector(".weather").style.display="block";
 
 async function checkweather(){
     const response = await fetch(apiUrl+`&appid = ${apikey}`);
-    var data = response.json();
+    var data = await response.json();
     console.log(data)
     document.querySelector(".city").innerHTML = data.name;
-    document.getElementById(".temp").innerHTML = Math.round(data.main.temp) +"k";
+    document.querySelector(".temp").innerHTML = Math.round(data.main.temp) +"k";
     document.querySelector(".humidity").innerHTML = data.main.humidity +"%";
-    document.querySelector(".wind").innerHTML = object.wind.speed +"km/h";
+    document.querySelector(".wind").innerHTML = data.wind.speed +"km/h";
     if(data.weather[0].main=="clouds"){
         weatherIcon:src="https://tse2.mm.bing.net/th?id=OIP.tSgdC54E9QQ_40YkYkSUgAHaG4&pid=Api&P=0&h=220"
     }
